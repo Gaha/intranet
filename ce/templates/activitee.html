@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Activitée' %}{% endblock title %}
+{% block content %}
+<ul>
+    <table>
+        <tr><th>Date</th><th>Commission</th><th>Nom</th></tr>
+        {% for activitee in object_list %}
+            <tr><td>{{ activitee.date }}</td><td>{{ activitee.commission.nom }}</td><td>{{ activitee.nom }}</td></tr>
+        {% endfor %}
+    </table>
+</ul>
+
+{% endblock content %}
