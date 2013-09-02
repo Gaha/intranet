@@ -1,0 +1,32 @@
+table {
+border: medium solid #000000;
+width: 50%
+}
+
+td,th {
+border: thin solid #6495ed;
+width:50%
+}
+
+ul#menu {
+height : 30px;
+margin : 2em 0 0 0;
+padding : 0;
+background-color : #f4f9fd;
+border : 1px dashed black;
+list-style-type : none;
+}
+
+ul#menu li {
+float : left;
+padding : 0 0.5em;
+line-height : 30px;
+}
+
+ul#menu a {
+color : black;
+text-decoration : none;
+padding : 0 0.5em;
+}
+
+ul#menu a:hover { text-decoration : underline; }
