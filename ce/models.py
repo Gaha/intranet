@@ -63,7 +63,8 @@ class CommissionMembre(models.Model) :
 class Activitee(models.Model):
     nom = models.CharField(max_length = 50)
     commission = models.ForeignKey('Commission')
-    date = models.DateTimeField(default = datetime.now())
+    date = models.DateField()
+    heure = models.TimeField()
     
     def __unicode__(self) :
         return u'%s : %s' % (self.date, self.nom)

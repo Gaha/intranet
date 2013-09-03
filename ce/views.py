@@ -2,14 +2,15 @@
 
 from django.views.generic import ListView
 from django.views.generic import TemplateView
-from ce.models import Agent, Commission, Activitee, Participation
+from ce.models import Agent, Commission, Activitee, Participation, Mendat
 
 class AgentView(ListView) :
     template_name = "agent.html"
     model = Agent
 
-class AcceuilView(TemplateView) :
+class AcceuilView(ListView) :
     template_name = "index.html"
+    model = Mendat
     
 class CommissionView(ListView) :
     template_name = "commission.html"

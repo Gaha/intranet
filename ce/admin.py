@@ -10,7 +10,7 @@ class AgentAdmin(admin.ModelAdmin) :
     search_fields = ('nom','prenom')
 
 class ActiviteeAdmin(admin.ModelAdmin) :
-    list_display = ('date','commission','nom')
+    list_display = ('date','heure','commission','nom')
     list_filter = ('date','commission','nom')
     date_hierarchy = ('date')
     ordering = ('date',)
