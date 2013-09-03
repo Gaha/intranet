@@ -4,8 +4,8 @@ from django.contrib import admin
 from ce.models import Agent, Commission, Activitee, Participation
 
 class AgentAdmin(admin.ModelAdmin) :
-    list_display = ('nom','prenom')
-    list_filter = ('nom','prenom')
+    list_display = ('nom','prenom','contrat')
+    list_filter = ('nom','prenom','contrat')
     ordering = ('nom',)
     search_fields = ('nom','prenom')
 

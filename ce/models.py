@@ -6,8 +6,15 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 class Agent(models.Model):
+    LISTE_CONTRAT = (
+        ('CDI','CDI'),
+        ('CDD','CDD'),
+        ('PRE','Prestataire'),
+        ('INT','Intérime'),
+    )
     nom = models.CharField(max_length = 50)
     prenom = models.CharField(max_length = 50)
+    contrat = models.CharField(max_length = 3, choices=LISTE_CONTRAT, default='CDI')
     
     # c'est ce qui s'affiche quand on print, notament dans admin
     def __unicode__(self) :
