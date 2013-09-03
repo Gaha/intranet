@@ -5,6 +5,7 @@
 
 <ul>
     <table>
+        <caption>Liste des agents</caption>
         <tr><th>Nom</th><th>Prénom</th></tr>
         {% for agent in object_list %}
             <tr><td>{{ agent.nom }}</td><td>{{ agent.prenom }}</td></tr>

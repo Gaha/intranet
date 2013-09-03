@@ -5,6 +5,7 @@
 
 <ul>
     <table>
+        <caption>Liste des participants</caption>
         <tr><th>Activitee</th><th>Nom</th><th>Agent</th><th>Conjoint</th><th>Enfant</th><th>Externe</th><th>Etat</th></tr>
         {% for part in object_list %}
             <tr><td>{{ part.activitee }}</td><td>{{ part.nom }}</td><td>{{ part.agent }}</td><td>{{ part.conjoint }}</td><td>{{ part.enfant }}</td><td>{{ part.externe }}</td><td>{{ part.etat }}</td></tr>
