@@ -1,7 +1,7 @@
 #-*- coding:utf-8 -*-
 
 from django.contrib import admin
-from ce.models import Agent, Commission, Activitee, Participation
+from ce.models import Agent, Commission, Activitee, Participation, Mendat
 
 class AgentAdmin(admin.ModelAdmin) :
     list_display = ('nom','prenom','contrat')
@@ -22,7 +22,12 @@ class ParticipationAdmin(admin.ModelAdmin) :
     ordering = ('activitee','nom')
     search_fields = ('nom', 'activitee')
 
+class MendatAdmin(admin.ModelAdmin) :
+    list_display = ('nom','mendat')
+    list_filter = ('mendat',)
+
 admin.site.register(Agent, AgentAdmin)
 admin.site.register(Commission)
 admin.site.register(Activitee, ActiviteeAdmin)
 admin.site.register(Participation, ParticipationAdmin)
+admin.site.register(Mendat, MendatAdmin)

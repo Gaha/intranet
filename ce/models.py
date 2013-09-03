@@ -12,6 +12,7 @@ class Agent(models.Model):
         ('PRE','Prestataire'),
         ('INT','Intérime'),
     )
+
     nom = models.CharField(max_length = 50)
     prenom = models.CharField(max_length = 50)
     contrat = models.CharField(max_length = 3, choices=LISTE_CONTRAT, default='CDI')
@@ -19,6 +20,25 @@ class Agent(models.Model):
     # c'est ce qui s'affiche quand on print, notament dans admin
     def __unicode__(self) :
         return u'%s %s' % (self.nom, self.prenom)
+
+class Mendat(models.Model) :
+    LISTE_MENDAT = (
+        ('DUP_PR','DUP Président'),
+        ('DUP_SE','DUP Secrétaire'),
+        ('CA_TIT','DUP Cadre Titulaire'),
+        ('CA_SUP','DUP Cadre Suppléant'),
+        ('AG_TIT','DUP Agent Titulaire'),
+        ('AG_SUP','DUP Agent Suppléant'),
+        ('DS','Délégués Syndical'),
+        ('CHS_PR','CHSCT Président'),
+        ('CHS_SE','CHSCT Secrétaire'),
+        ('CHS_ME','CHSCT Membres'),
+    )
+    nom = models.ForeignKey('Agent')
+    mendat = models.CharField(max_length = 6, choices=LISTE_MENDAT)
+
+    def __unicode__(self) :
+        return u'%s - %s' %(self.nom, self.mendat)
 
 class Commission(models.Model):
     nom = models.CharField(max_length = 50)
