@@ -5,7 +5,16 @@
 
 Liste des membres de la DUP <br>
 
-{{ object_list }}
-
+<ul>
+    <li>Président : {{ dup_president.nom }}</li>
+    <li>Secrétaire : {{ dup_secretaire.nom}}</li>
+    <li>Trésorier : {% for tresor in dup_tresorier %} {{ tresor.nom }} {% endfor %}</li>
+    <li>Cadre titulaire : {% for cadt in dup_cadre_titu %} {{ cadt.nom }} {% endfor %}</li>
+    <li>Cadre suppléant : {% for cads in dup_cadre_supp %} {{ cads.nom }} {% endfor %}</li>
+    <li>Agent titulaire : {% for agt in dup_agent_titu %} {{ agt.nom }} {% endfor %}</li>
+    <li>Agent suppléant : {% for ags in dup_agent_supp %} {{ ags.nom }} {% endfor %}</li>
+    
+</ul>
 
 {% endblock content %}
+

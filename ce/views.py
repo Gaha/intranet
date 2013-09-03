@@ -1,26 +1,41 @@
 #-*- coding:utf-8 -*-
 
-from django.views.generic import ListView
-from django.views.generic import TemplateView
+from django.shortcuts import render
 from ce.models import Agent, Commission, Activitee, Participation, Mendat
 
-class AgentView(ListView) :
-    template_name = "agent.html"
-    model = Agent
+def view_agent(request) :
+    reponse= {}
+    reponse['list_agent'] = Agent.objects.all()
+    return render(request, 'agent.html', reponse)
+    
+def view_commission(request) :
+    reponse = {}
+    # liste des commissions
+    reponse['list_commission'] = Commission.objects.all()
+    synthese = []
+    for com in reponse['list_commission'] :
+        synthese.append((com.nom, len(Activitee.objects.filter(commission__nom = com.nom))))
+    reponse['synth_commission'] = synthese
+    return render(request, 'commission.html', reponse)
 
-class AcceuilView(ListView) :
-    template_name = "index.html"
-    model = Mendat
-    
-class CommissionView(ListView) :
-    template_name = "commission.html"
-    model = Commission
-    
-class ActiviteeView(ListView) :
-    template_name = "activitee.html"
-    model = Activitee
+def view_activitee(request) :
+    reponse = {}
+    reponse['list_activitee'] = Activitee.objects.all()
+    return render(request, 'activitee.html', reponse)
 
-class ParticipationView(ListView) :
-    template_name = "participation.html"
-    model = Participation
+def view_participation(request) :
+    reponse = {}
+    reponse['list_participation'] = Participation.objects.all()
+    return render(request, 'participation.html', reponse)
     
+def membres_dup(request):
+    reponse = {}
+    reponse['dup_president'] = Mendat.objects.get(mendat = 'DUP_PR')
+    reponse['dup_secretaire'] = Mendat.objects.get(mendat = 'DUP_SE')
+    # je pense que si je souhaite séparer les trésorier par une virgule, je doit le faire ici et pas dans le template
+    reponse['dup_tresorier'] = Mendat.objects.filter(mendat = 'DUP_TR')
+    reponse['dup_cadre_titu'] = Mendat.objects.filter(mendat = 'CA_TIT')
+    reponse['dup_cadre_supp'] = Mendat.objects.filter(mendat = 'CA_SUP')
+    reponse['dup_agent_titu'] = Mendat.objects.filter(mendat = 'AG_TIT')
+    reponse['dup_agent_supp'] = Mendat.objects.filter(mendat = 'AG_SUP')
+    return render(request, 'index.html', reponse)

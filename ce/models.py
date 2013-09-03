@@ -25,6 +25,7 @@ class Mendat(models.Model) :
     LISTE_MENDAT = (
         ('DUP_PR','DUP Président'),
         ('DUP_SE','DUP Secrétaire'),
+        ('DUP_TR','DUP Trésorier'),
         ('CA_TIT','DUP Cadre Titulaire'),
         ('CA_SUP','DUP Cadre Suppléant'),
         ('AG_TIT','DUP Agent Titulaire'),

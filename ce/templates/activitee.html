@@ -6,7 +6,7 @@
     <table>
         <caption>Liste des activitées</caption>
         <tr><th>Date</th><th>Heure</th><th>Commission</th><th>Nom</th></tr>
-        {% for activitee in object_list %}
+        {% for activitee in list_activitee %}
             <tr><td>{{ activitee.date }}</td><td>{{ activitee.heure }}</td><td>{{ activitee.commission.nom }}</td><td>{{ activitee.nom }}</td></tr>
         {% endfor %}
     </table>

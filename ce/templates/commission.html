@@ -7,11 +7,26 @@
     <table>
         <caption>Liste des commissions</caption>
         <tr><th>Commissions</th></tr>
-        {% for agent in object_list %}
-            <tr><td>{{ agent.nom }}</td></tr>
+        {% for com in list_commission %}
+            <tr><td>{{ com.nom }}</td></tr>
         {% endfor %}
     </table>
 </ul>
+
+<ul>
+    <table>
+        <caption>Synthèse des commissions</caption>
+        <tr><th>Commissions</th><th>Activitee</th></tr>
+        {% for com in synth_commission %}
+            <tr>
+                {%for co in com %}
+                <td>{{ co }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</ul>
+
 
 {% endblock content %}
 
