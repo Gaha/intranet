@@ -46,13 +46,27 @@ class Commission(models.Model):
     def __unicode__(self) :
         return u'%s' %(self.nom)
 
+class CommissionMembre(models.Model) :
+    LISTE_MEMBRE = (
+        ('PRE','Président'),
+        ('DUP','Membre DUP'),
+        ('AGE','Membre Agent')
+    )
+    commission = models.ForeignKey('Commission')
+    agent = models.ForeignKey('Agent')
+    membre = models.CharField(max_length = 3, choices=LISTE_MEMBRE)
+
+    def __unicode__(self) :
+        return u'%s : %s - %s' %(self.commission, self.agent, self.membre)
+
+
 class Activitee(models.Model):
     nom = models.CharField(max_length = 50)
     commission = models.ForeignKey('Commission')
     date = models.DateTimeField(default = datetime.now())
     
     def __unicode__(self) :
-        return u'%s %s' % (self.date, self.nom)
+        return u'%s : %s' % (self.date, self.nom)
 
 class Participation(models.Model) :
     LISTE_ETAT = (
@@ -68,4 +82,4 @@ class Participation(models.Model) :
     etat = models.CharField(max_length = 2, choices=LISTE_ETAT, default='IN')
     
     def __unicode__(self):
-        return u'%s %s' % (self.nom, self.activitee)
+        return u'%s : %s' % (self.activitee, self.nom)
