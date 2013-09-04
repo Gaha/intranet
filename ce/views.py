@@ -5,7 +5,7 @@ from ce.models import Agent, Commission, Activitee, Participation, Mendat
 
 def view_agent(request) :
     reponse= {}
-    reponse['list_agent'] = Agent.objects.all()
+    reponse['list_agent'] = Agent.objects.all().order_by('nom')
     return render(request, 'agent.html', reponse)
     
 def view_commission(request) :
