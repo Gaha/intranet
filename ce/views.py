@@ -30,8 +30,14 @@ def view_participation(request) :
     
 def membres_dup(request):
     reponse = {}
-    reponse['dup_president'] = Mendat.objects.get(mendat = 'DUP_PR')
-    reponse['dup_secretaire'] = Mendat.objects.get(mendat = 'DUP_SE')
+    try :
+        reponse['dup_president'] = Mendat.objects.get(mendat = 'DUP_PR')
+    except :
+        reponse['dup_president'] = ''
+    try :
+        reponse['dup_secretaire'] = Mendat.objects.get(mendat = 'DUP_SE')
+    except Mendat.DoesNotExist :
+        reponse['dup_secretaire'] = ''
     # je pense que si je souhaite séparer les trésorier par une virgule, je doit le faire ici et pas dans le template
     reponse['dup_tresorier'] = Mendat.objects.filter(mendat = 'DUP_TR')
     reponse['dup_cadre_titu'] = Mendat.objects.filter(mendat = 'CA_TIT')
