@@ -20,7 +20,7 @@ def view_commission(request) :
 
 def view_activitee(request) :
     reponse = {}
-    reponse['list_activitee'] = Activitee.objects.all()
+    reponse['list_activitee'] = Activitee.objects.all().order_by('commission__nom')
     return render(request, 'activitee.html', reponse)
 
 def view_participation(request) :
