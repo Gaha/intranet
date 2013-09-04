@@ -12,4 +12,21 @@
     </table>
 </ul>
 
+<ul>
+    <table>
+        <caption>Synthèse des activitées</caption>
+        <tr><th>Activitée</th><th>Agent</th><th>conjoint</th><th>Enfants<th>Externe</th><th>Total</tr>
+        {% for synth in synth_activitee %}
+            <tr>
+            	<td>{{ synth.activitee }}</td>
+            	<td>{{ synth.agent__sum|default_if_none:"0" }}</td>
+            	<td>{{ synth.conjoint__sum|default_if_none:"0" }}</td>
+            	<td>{{ synth.enfant__sum|default_if_none:"0" }}</td>
+            	<td>{{ synth.externe__sum|default_if_none:"0" }}</td>
+            	<td>{{ synth.total }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</ul>
+
 {% endblock content %}

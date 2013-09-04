@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 
 from django.shortcuts import render
+from django.db.models import Sum
 from ce.models import Agent, Commission, Activitee, Participation, Mendat
 
 def view_agent(request) :
@@ -21,11 +22,22 @@ def view_commission(request) :
 def view_activitee(request) :
     reponse = {}
     reponse['list_activitee'] = Activitee.objects.all().order_by('commission__nom')
+    # synthèse des activitées
+    reponse['synth_activitee'] = []
+    for acti in reponse['list_activitee'] :
+        synth_acti = Participation.objects.filter( activitee__nom = acti.nom).aggregate(Sum('agent'),Sum('conjoint'),Sum('enfant'),Sum('externe'))
+        synth_acti['activitee'] = acti.nom
+        try :
+            synth_acti['total'] = synth_acti['agent__sum'] + synth_acti['conjoint__sum'] + synth_acti['enfant__sum'] + synth_acti['externe__sum']
+        except TypeError :
+            synth_acti['total'] = 0
+        reponse['synth_activitee'].append(synth_acti)
+    #reponse['synth_activitee']['activitee'] = 'Les fourberies de scapin'
     return render(request, 'activitee.html', reponse)
 
 def view_participation(request) :
     reponse = {}
-    reponse['list_participation'] = Participation.objects.all()
+    reponse['list_participation'] = Participation.objects.all().order_by('-activitee__date')
     return render(request, 'participation.html', reponse)
     
 def membres_dup(request):
