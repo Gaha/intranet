@@ -13,10 +13,9 @@ def view_commission(request) :
     reponse = {}
     # liste des commissions
     reponse['list_commission'] = Commission.objects.all().order_by('nom')
-    synthese = []
+    reponse['synth_commission'] = []
     for com in reponse['list_commission'] :
-        synthese.append((com.nom, len(Activitee.objects.filter(commission__nom = com.nom))))
-    reponse['synth_commission'] = synthese
+        reponse['synth_commission'].append({'commission' : com.nom, 'nb_activitee' : len(Activitee.objects.filter(commission__nom = com.nom)) })
     return render(request, 'commission.html', reponse)
 
 def view_activitee(request) :
