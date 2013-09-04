@@ -11,7 +11,7 @@ def view_agent(request) :
 def view_commission(request) :
     reponse = {}
     # liste des commissions
-    reponse['list_commission'] = Commission.objects.all()
+    reponse['list_commission'] = Commission.objects.all().order_by('nom')
     synthese = []
     for com in reponse['list_commission'] :
         synthese.append((com.nom, len(Activitee.objects.filter(commission__nom = com.nom))))
