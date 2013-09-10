@@ -1,23 +1,25 @@
 body {
-    background: #f8f8f8;
-    font-family: 'SourceSans';
-    -webkit-font-smoothing: subpixel-antialiased;
+    background: #EDFAE3;
     color: #4d4d4d;
 }
 
 header {
-    height: 40px;
+    height: 55px;
+    left : 0px;
+    top: 0;
     width: 100%;
     position: fixed;
-    top: 0;
     z-index: 100;
-    background: #f8f8f8;
+    color: #EDFAE3;
+    background: #91C368;
 }
 
 header nav {
-    position: absolute;
+    position: relative;
     top: 0px;
-    left: 50px;
+    color: #EDFAE3;
+    text-align: center;
+    font-weight: bold;
 }
 
 header nav li {
@@ -27,7 +29,6 @@ header nav li {
 
 header nav li a {
     cursor: pointer;
-    color: #666;
     text-decoration: none;
     font-size: 15px;
     display: block;
@@ -36,7 +37,12 @@ header nav li a {
 }
 
 header nav li a:hover {
-    color: #1a1a1a;
+    color: #72A487;
+    text-decoration: underline;
+}
+
+header nav li a:visited {
+    color: #EDFAE3;
 }
 
 header .shadow {
@@ -57,12 +63,16 @@ table {
     border-collapse: collapse;
 }
 
+th {
+    background: #72A487;
+    color: #C2F2D5;
+    font-weight: bold;
+}
+
 td,th {
     border: thin solid #4d4d4d;
     
 }
-
-
 
 #content {
     height : 100%;
