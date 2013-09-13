@@ -28,6 +28,7 @@ header nav li {
 }
 
 header nav li a {
+    color: #EDFAE3;
     cursor: pointer;
     text-decoration: none;
     font-size: 15px;
