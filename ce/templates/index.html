@@ -3,18 +3,29 @@
 {% block title %}{% trans 'Acceuil' %}{% endblock title %}
 {% block content %}
 
-Liste des membres de la DUP <br>
+<div class='container'>
+    <div class="page-header">Membres de la DUP</div>
+    <div class='row'>Président : {{ dup_president.nom }}</div>
+    <div class='row'>Secrétaire : {{ dup_secretaire.nom }}</div>
+    <div class='row'>Trésorier : {% for tresor in dup_tresorier %} {{ tresor.nom }} {% endfor %}</div>
+    <div class='row'>Cadre titulaire : {% for cadt in dup_cadre_titu %} {{ cadt.nom }} {% endfor %}</div>
+    <div class='row'>Cadre suppléant : {% for cads in dup_cadre_supp %} {{ cads.nom }} {% endfor %}</div>
+    <div class='row'>Agent titulaire : {% for agt in dup_agent_titu %} {{ agt.nom }} {% endfor %}</div>
+    <div class='row'>Agent suppléant : {% for ags in dup_agent_supp %} {{ ags.nom }} {% endfor %}</div>
+</div>
 
-<ul>
-    <li>Président : {{ dup_president.nom }}</li>
-    <li>Secrétaire : {{ dup_secretaire.nom}}</li>
-    <li>Trésorier : {% for tresor in dup_tresorier %} {{ tresor.nom }} {% endfor %}</li>
-    <li>Cadre titulaire : {% for cadt in dup_cadre_titu %} {{ cadt.nom }} {% endfor %}</li>
-    <li>Cadre suppléant : {% for cads in dup_cadre_supp %} {{ cads.nom }} {% endfor %}</li>
-    <li>Agent titulaire : {% for agt in dup_agent_titu %} {{ agt.nom }} {% endfor %}</li>
-    <li>Agent suppléant : {% for ags in dup_agent_supp %} {{ ags.nom }} {% endfor %}</li>
-    
-</ul>
+<div class='container'>
+    <div class="page-header">Membres du CHSCT</div>
+    <div class='row'>Président : {{ chsct_president.nom }}</div>
+    <div class='row'>Secrétaire : {{ chsct_secretaire.nom }}</div>
+    <div class='row'>Membres : {% for membre in chsct_membres %} {{ membre.nom }} {% endfor %}</div>
+</div>
+
+<div class='container'>
+    <div class="page-header">Déléger Syndical</div>
+    <div class='row'>DS : {% for membre in ds_membres %} {{ membre.nom }} {% endfor %}</div>
+</div>
+
 
 {% endblock content %}
 

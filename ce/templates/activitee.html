@@ -2,18 +2,17 @@
 {% load i18n %}
 {% block title %}{% trans 'Activitée' %}{% endblock title %}
 {% block content %}
-<ul>
-    <table>
+
+<div class='container'>
+    <table class='table'>
         <caption>Liste des activitées</caption>
         <tr><th>Date</th><th>Heure</th><th>Commission</th><th>Nom</th></tr>
         {% for activitee in list_activitee %}
             <tr><td>{{ activitee.date }}</td><td>{{ activitee.heure }}</td><td>{{ activitee.commission.nom }}</td><td>{{ activitee.nom }}</td></tr>
         {% endfor %}
     </table>
-</ul>
 
-<ul>
-    <table>
+    <table class='table'>
         <caption>Synthèse des activitées</caption>
         <tr><th>Activitée</th><th>Agent</th><th>conjoint</th><th>Enfants<th>Externe</th><th>Total</tr>
         {% for synth in synth_activitee %}
@@ -27,6 +26,7 @@
             </tr>
         {% endfor %}
     </table>
-</ul>
+
+</div>
 
 {% endblock content %}

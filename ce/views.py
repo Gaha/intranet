@@ -41,11 +41,13 @@ def view_participation(request) :
     
 def membres_dup(request):
     reponse = {}
-    try :
+
+    # DUP
+    try:
         reponse['dup_president'] = Mendat.objects.get(mendat = 'DUP_PR')
-    except :
+    except Mendat.DoesNotExist:
         reponse['dup_president'] = ''
-    try :
+    try:
         reponse['dup_secretaire'] = Mendat.objects.get(mendat = 'DUP_SE')
     except Mendat.DoesNotExist :
         reponse['dup_secretaire'] = ''
@@ -55,4 +57,21 @@ def membres_dup(request):
     reponse['dup_cadre_supp'] = Mendat.objects.filter(mendat = 'CA_SUP')
     reponse['dup_agent_titu'] = Mendat.objects.filter(mendat = 'AG_TIT')
     reponse['dup_agent_supp'] = Mendat.objects.filter(mendat = 'AG_SUP')
+
+    # CHSCT
+    try:
+        reponse['chsct_president'] = Mendat.objects.get(mendat = 'CHS_PR')
+    except Mendat.DoesNotExist:
+        reponse['chsct_president'] = ''
+    try:
+        reponse['chsct_secretaire'] = Mendat.objects.get(mendat = 'CHS_SE')
+    except Mendat.DoesNotExist :
+        reponse['chsct_secretaire'] = ''
+    reponse['chsct_membres'] = Mendat.objects.filter(mendat = 'CHS_ME')
+
+    # DS
+    reponse['ds_membres'] = Mendat.objects.filter(mendat = 'DS')
+
+
     return render(request, 'index.html', reponse)
+

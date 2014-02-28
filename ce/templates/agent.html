@@ -3,14 +3,15 @@
 {% block title %}{% trans 'Agent' %}{% endblock title %}
 {% block content %}
 
-<ul>
-    <table>
+<div class='container'>
+
+    <table class='table'>
         <caption>Liste des agents</caption>
         <tr><th>Nom</th><th>Prénom</th><th>Contrat</th></tr>
         {% for agent in list_agent %}
             <tr><td>{{ agent.nom }}</td><td>{{ agent.prenom }}</td><td>{{ agent.contrat }}</td></tr>
         {% endfor %}
     </table>
-</ul>
+</div>
 
 {% endblock content %}

@@ -4,7 +4,10 @@
 <head>
     <title>Site du CE : {% block title %}{% endblock title %}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="{% static 'ce.css' %}" />
+    <!-- <link rel="stylesheet" type="text/css" media="all" href="{% static 'ce.css' %}" /> -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Pour la version tablette/phone -->
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -16,9 +19,7 @@
     </div>
 </header>
     
-<div id="content">
     {% block content %}{% endblock content %}
-</div>
 
 <div id="footer">
     {% block footer %}
@@ -26,6 +27,11 @@
     {% endblock%}
 </div>
 
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
 </body>
 </html>
 
